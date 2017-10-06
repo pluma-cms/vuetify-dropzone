@@ -52,7 +52,7 @@
         </div>
       </div>
       <slot></slot>
-      <template v-if="!dropzone.options.autoProcessQueue">
+      <template v-if="! dropzone.options.autoProcessQueue">
         <slot name="submit">
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -92,7 +92,7 @@
             dictUploadButtonLabel: 'Start',
             dictUploadButtonIcon: 'file_upload',
             height: '200px',
-            parallelUploads: 2000,
+            parallelUploads: 1,
             paramName: 'file',
             params: {},
             // previewsContainer: ".dropzone-previews",
@@ -131,6 +131,7 @@
                 self.options.parallelUploads = this.files.length
               }
 
+              console.log('asd', self.dropzone.instance.options)
               self.files.push(file)
               self.$emit('addedfile', file, self.dropzone)
             })
@@ -177,9 +178,11 @@
               let dis = this
               file.previewElement.classList.add("dz-success")
               // file.previewElement.querySelector('.dz-success-mark').classList.remove('dz-hidden')
-              setTimeout(function () {
-                // dis.removeFile(file)
-              }, 800)
+              if (self.autoRemoveFiles) {
+                setTimeout(function () {
+                  dis.removeFile(file)
+                }, 900)
+              }
 
               self.$emit("success", file, response)
             })
