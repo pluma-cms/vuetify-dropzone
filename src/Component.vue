@@ -171,7 +171,7 @@
                 preview.querySelector('.dz-error-message').classList.remove('dz-hidden')
               }
 
-              self.dropzone.options.autoProcessQueue = false
+              // self.dropzone.options.autoProcessQueue = false
             })
 
             self.dropzone.instance.on("success", function (file, response) {
