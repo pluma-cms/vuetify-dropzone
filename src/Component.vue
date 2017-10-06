@@ -87,7 +87,7 @@
           options: {
             acceptedFiles: null,
             addRemoveLinks: false,
-            autoProcessQueue: false,
+            autoProcessQueue: true,
             createImageThumbnails: true,
             dictUploadButtonLabel: 'Start',
             dictUploadButtonIcon: 'file_upload',
@@ -131,7 +131,7 @@
                 self.options.parallelUploads = this.files.length
               }
 
-              console.log('asd', self.dropzone.instance.options)
+              // console.log('asd', self.dropzone.instance.options)
               self.files.push(file)
               self.$emit('addedfile', file, self.dropzone)
             })
