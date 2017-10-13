@@ -188,9 +188,16 @@
             })
 
             self.dropzone.instance.on("error", function (file, errorMessage) {
-              if (typeof errorMessage == 'undefined') {
-                errorMessage = errorMessage.join(', ')
+              if (typeof errorMessage == 'object') {
+                let errors = []
+                for (let e in errorMessage) {
+                  errorMessage[e] = errorMessage[e].join(', ')
+                  errors.push(errorMessage[e])
+                }
+                errorMessage = errors.join(', ')
               }
+
+              file.previewElement.querySelector('[data-dz-errormessage]').innerHTML = errorMessage
               self.$emit("error", file, errorMessage)
             })
 
