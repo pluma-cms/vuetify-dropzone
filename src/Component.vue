@@ -138,7 +138,7 @@
 
             self.dropzone.instance.on("sending", function (file, xhr, formData) {
               // console.log('sending', JSON.parse(JSON.stringify(self.dropzone.options.params)))
-              self.$emit("sending", file, xhr, formData)
+              self.$emit("sending", {file, xhr, formData})
 
               for (let param in self.params) {
                 // console.log(param, self.params[param])
