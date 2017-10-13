@@ -138,6 +138,8 @@
 
             self.dropzone.instance.on("sending", function (file, xhr, formData) {
               // console.log('sending', JSON.parse(JSON.stringify(self.dropzone.options.params)))
+              self.$emit("sending", file, xhr, formData)
+
               for (let param in self.params) {
                 // console.log(param, self.params[param])
                 formData.append(param, self.params[param])
@@ -206,11 +208,11 @@
               self.$emit("processing")
             })
 
-            self.dropzone.instance.on("sending", function(file, xhr, formData) {
-              // Will send the filesize along with the file as POST data.
-              // formData.append("filesize", file.size);
-              self.$emit("sending", file, xhr, formData)
-            })
+            // self.dropzone.instance.on("sending", function(file, xhr, formData) {
+            //   // Will send the filesize along with the file as POST data.
+            //   // formData.append("filesize", file.size);
+            //   self.$emit("sending", file, xhr, formData)
+            // })
           },
 
           submit () {
