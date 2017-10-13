@@ -28,7 +28,8 @@ export default {
   components: { 'vue-component': Component },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      name: 'lorem'
     }
   }
 }

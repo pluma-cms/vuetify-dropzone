@@ -187,8 +187,15 @@
               self.$emit("success", file, response)
             })
 
+            self.dropzone.instance.on("error", function (file, errorMessage) {
+              if (typeof errorMessage == 'undefined') {
+                errorMessage = errorMessage.join(', ')
+              }
+              self.$emit("error", file, errorMessage)
+            })
+
             self.dropzone.instance.on("processing", function () {
-              self.dropzone.options.autoProcessQueue = true
+              // self.dropzone.options.autoProcessQueue = true
               self.$emit("processing")
             })
 
