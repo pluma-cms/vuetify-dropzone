@@ -73,6 +73,7 @@
       prop: 'params'
     },
     props: {
+      autoRemoveFiles: { type: Boolean, default: false },
       params: { type: Object, default: () => { return {} } },
       fallbackUrl: { type: String, default: '/' },
       name: { type: String, default: 'file' },
@@ -133,7 +134,7 @@
 
               // console.log('asd', self.dropzone.instance.options)
               self.files.push(file)
-              self.$emit('addedfile', file, self.dropzone)
+              self.$emit('addedfile', {file, dropzone: self.dropzone})
             })
 
             self.dropzone.instance.on("sending", function (file, xhr, formData) {
