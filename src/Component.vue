@@ -228,7 +228,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~dropzone/src/dropzone";
+  @import "~dropzone/src/dropzone.scss";
 
   .dropzone {
     border: 1px dashed rgba(0,0,0,0.2);
